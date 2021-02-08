@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+struct WorkerModel {
+    let avatar: AnyObject
+    let firstName: String
+    let lastName: String
+    let dateOfBirth: Date
+    let company: String
+}
