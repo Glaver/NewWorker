@@ -59,9 +59,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="78"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cMj-1C-Huy">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cMj-1C-Huy">
                                                     <rect key="frame" x="20" y="22" width="374" height="34"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
@@ -128,7 +128,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UeE-b8-RaM">
-                                                    <rect key="frame" x="117" y="16" width="180" height="30"/>
+                                                    <rect key="frame" x="117" y="15.5" width="180" height="30"/>
                                                     <color key="backgroundColor" systemColor="systemGreenColor"/>
                                                     <state key="normal" title="Save">
                                                         <color key="titleColor" systemColor="secondarySystemBackgroundColor"/>
@@ -156,7 +156,7 @@
                     </tableView>
                     <connections>
                         <outlet property="avatarImage" destination="kgV-lb-4KH" id="ddt-8O-HIf"/>
-                        <outlet property="choosenCompany" destination="r9b-02-zHb" id="m4a-8H-dFF"/>
+                        <outlet property="choosenCompanyLabel" destination="r9b-02-zHb" id="m4a-8H-dFF"/>
                         <outlet property="datePicker" destination="fx8-jh-48M" id="lMf-ZS-U6L"/>
                         <outlet property="firstName" destination="vSk-Jr-RDP" id="qqK-Wl-d9c"/>
                         <outlet property="lastName" destination="cMj-1C-Huy" id="5J0-28-eJL"/>
@@ -182,7 +182,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="W6E-6o-CaM">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="W6E-6o-CaM">
                                             <rect key="frame" x="20" y="11" width="374" height="21"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
