@@ -4,7 +4,8 @@
 //
 //  Created by Vladyslav on 4/2/21.
 //
-
+import CoreData
+import Foundation
 import UIKit
 
 class WorkerTableViewController: UITableViewController {
@@ -21,12 +22,12 @@ class WorkerTableViewController: UITableViewController {
         if !firstNameData.isValidate || !lastNameData.isValidate || !companyToWork.isValidate || !datePickerValidation.isValidate {
             showSaveAlertWith(message: firstNameData.message + lastNameData.message + companyToWork.message + datePickerValidation.message)
         } else {
-            showSaveAlertWith(message: "Worker saved")
-            workerModel.serviceCoreData?.saveWorker(WorkerDTO(avatarImage: "URL",
-                                                              company: choosenCompanyLabel.text!,
-                                                              dateOfBirth: datePicker.date,
-                                                              firstName: firstName.text,
-                                                              lastName: lastName.text))
+            showSaveAlertWith(message: "Worker saved") //avatarImage.image?.pngData()
+            workerModel.serviceCoreData?.saveWorker(WorkerDTO(avatarImage: avatarImage.image?.pngData(),
+                                                                           company: choosenCompanyLabel.text!,
+                                                                           dateOfBirth: datePicker.date,
+                                                                           firstName: firstName.text,
+                                                                           lastName: lastName.text))
         }
     }
     
@@ -39,7 +40,7 @@ class WorkerTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 && indexPath.row == 0 {
-                self.avatarImage.load(url: URL(string: "https://picsum.photos/200")!)
+            self.avatarImage.load(url: ImageAPI.url)
         }
     }
     
@@ -53,5 +54,17 @@ class WorkerTableViewController: UITableViewController {
     
     func choosenCompanyDelegate(_ company: String) {
         choosenCompanyLabel.text = company
+    }
+}
+
+class DeleteEntityPolicy: NSEntityMigrationPolicy {
+    override func begin(_ mapping: NSEntityMapping, with manager: NSMigrationManager) throws {
+        // Get all current entities and delete them before mapping begins
+        let entityName = "NewWorker"
+        let request = NSFetchRequest<NSManagedObject>(entityName: entityName)
+        let context = manager.sourceContext
+        let results = try context.fetch(request)
+        results.forEach(context.delete)
+        try super.begin(mapping, with: manager)
     }
 }

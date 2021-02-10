@@ -9,7 +9,7 @@ import Foundation
 
 
 struct WorkerDTO {
-    var avatarImage: String?
+    var avatarImage: Data?
     var company: String?
     var dateOfBirth: Date?
     var firstName: String?

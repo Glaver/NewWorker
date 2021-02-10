@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+class ImageAPI {
+    static let url = URL(string: "https://picsum.photos/200")!
+}

@@ -20,7 +20,7 @@ class WorkerCoreDataService: WorkerCoreDataServiceProtocol {
         guard let entity = NSEntityDescription.entity(forEntityName: "WorkerEntity", in: managedContext) else { return }
         
         let workerObject = WorkerEntity(entity: entity, insertInto: managedContext)
-        workerObject.avatarImage = newWorker.avatarImage
+        workerObject.imageData = newWorker.avatarImage
         workerObject.company = newWorker.company
         workerObject.dateOfBirth = newWorker.dateOfBirth
         workerObject.firstName = newWorker.firstName
