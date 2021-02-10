@@ -5,9 +5,10 @@
         <attribute name="company" optional="YES" attributeType="String"/>
         <attribute name="dateOfBirth" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="firstName" optional="YES" attributeType="String"/>
+        <attribute name="imageData" optional="YES" attributeType="Binary"/>
         <attribute name="lastName" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="WorkerEntity" positionX="-63" positionY="-18" width="128" height="104"/>
+        <element name="WorkerEntity" positionX="-63" positionY="-18" width="128" height="119"/>
     </elements>
 </model>
