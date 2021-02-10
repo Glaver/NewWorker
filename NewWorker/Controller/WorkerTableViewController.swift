@@ -22,7 +22,11 @@ class WorkerTableViewController: UITableViewController {
             showSaveAlertWith(message: firstNameData.message + lastNameData.message + companyToWork.message + datePickerValidation.message)
         } else {
             showSaveAlertWith(message: "Worker saved")
-            workerModel.serviceCoreData?.saveWorker(WorkerDTO(avatarImage: "URL", company: choosenCompanyLabel.text!, dateOfBirth: datePicker.date, firstName: firstName.text, lastName: lastName.text))
+            workerModel.serviceCoreData?.saveWorker(WorkerDTO(avatarImage: "URL",
+                                                              company: choosenCompanyLabel.text!,
+                                                              dateOfBirth: datePicker.date,
+                                                              firstName: firstName.text,
+                                                              lastName: lastName.text))
         }
     }
     
@@ -31,6 +35,12 @@ class WorkerTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 && indexPath.row == 0 {
+                self.avatarImage.load(url: URL(string: "https://picsum.photos/200")!)
+        }
     }
     
     private func showSaveAlertWith(message: String) {

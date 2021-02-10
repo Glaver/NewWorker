@@ -14,7 +14,7 @@ let minAge = 16
 let defaultValueLabelCompany = "Choose company"
 
 @propertyWrapper
-struct Validate < Value> {
+struct Validate <Value> {
     var value: Value?
     var validations: [(Value?) -> Bool] = []
     
@@ -103,7 +103,7 @@ class Validation {
         var isValid: Bool = true
         var errorMessage = ""
         if datePicker < maximumAge || datePicker > minimumAge {
-            isValid = false; errorMessage = "You can't work"
+            isValid = false; errorMessage = "You can't work because of age"
         }
         return (isValidate: isValid, message: errorMessage)
     }
