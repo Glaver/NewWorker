@@ -10,6 +10,7 @@ import UIKit
 
 class CompanyTableViewController: UITableViewController {
     let avalibleCompanys = ["Apple", "Google", "IBM", "Tesla", "Microsoft"]
+    // MARK: Upload from CoreData
     
     override func viewDidLoad() {
         super.viewDidLoad()

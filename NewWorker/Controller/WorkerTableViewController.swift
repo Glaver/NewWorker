@@ -31,7 +31,7 @@ class WorkerTableViewController: UITableViewController {
         }
     }
     
-    let workerModel = WorkerModel(serviceCoreData: WorkerCoreDataService())
+    let workerModel = WorkerModel(serviceCoreData: CoreDataService())
     
     override func viewDidLoad() {
         super.viewDidLoad()

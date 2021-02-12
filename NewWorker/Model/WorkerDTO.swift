@@ -7,11 +7,14 @@
 
 import Foundation
 
-
 struct WorkerDTO {
-    var avatarImage: Data?
-    var company: String?
-    var dateOfBirth: Date?
-    var firstName: String?
-    var lastName: String?
+    let avatarImage: Data?
+    let company: String?
+    let dateOfBirth: Date?
+    let firstName: String?
+    let lastName: String?
+}
+
+struct CompanyDTO {
+    let name: String
 }

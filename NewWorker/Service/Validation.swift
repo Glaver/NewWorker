@@ -7,7 +7,7 @@
 
 import Foundation
 
-let minLenghtOfTextField = 4
+let minLenghtOfTextField = 2
 let maxLenghtOfTextField = 25
 let maxAge = 60
 let minAge = 16
