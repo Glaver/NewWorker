@@ -51,6 +51,7 @@ class WorkerTableViewController: UITableViewController {
         }))
         self.present(alert, animated: true, completion: nil)
     }
+
     
     func choosenCompanyDelegate(_ company: String) {
         choosenCompanyLabel.text = company

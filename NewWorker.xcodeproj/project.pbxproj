@@ -13,6 +13,8 @@
 		87295DAC25D29BE600C4D3B7 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87295DAB25D29BE600C4D3B7 /* Validation.swift */; };
 		87295DB025D30F3700C4D3B7 /* Extansion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87295DAF25D30F3700C4D3B7 /* Extansion.swift */; };
 		873DCBAD25D6DAAF004310D5 /* CompanyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873DCBAC25D6DAAF004310D5 /* CompanyModel.swift */; };
+		873DCBB325D7F930004310D5 /* WorkerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873DCBB125D7F930004310D5 /* WorkerDetailViewController.swift */; };
+		873DCBB925D836A7004310D5 /* DateFormattingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873DCBB825D836A7004310D5 /* DateFormattingHelper.swift */; };
 		876015B225D6AE8900AE0EBA /* WorkerTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876015B125D6AE8900AE0EBA /* WorkerTabBarViewController.swift */; };
 		8781F9E125C83B97001DF29E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8781F9E025C83B97001DF29E /* AppDelegate.swift */; };
 		8781F9E325C83B97001DF29E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8781F9E225C83B97001DF29E /* SceneDelegate.swift */; };
@@ -34,6 +36,8 @@
 		87295DAB25D29BE600C4D3B7 /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		87295DAF25D30F3700C4D3B7 /* Extansion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extansion.swift; sourceTree = "<group>"; };
 		873DCBAC25D6DAAF004310D5 /* CompanyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyModel.swift; sourceTree = "<group>"; };
+		873DCBB125D7F930004310D5 /* WorkerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkerDetailViewController.swift; sourceTree = "<group>"; };
+		873DCBB825D836A7004310D5 /* DateFormattingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormattingHelper.swift; sourceTree = "<group>"; };
 		876015B125D6AE8900AE0EBA /* WorkerTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkerTabBarViewController.swift; sourceTree = "<group>"; };
 		8781F9DD25C83B97001DF29E /* NewWorker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewWorker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8781F9E025C83B97001DF29E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -120,6 +124,7 @@
 				8781F9F925CC3471001DF29E /* WorkerTableViewController.swift */,
 				8700B19625CD61B300D10CA7 /* CompanyTableViewController.swift */,
 				876015B125D6AE8900AE0EBA /* WorkerTabBarViewController.swift */,
+				873DCBB125D7F930004310D5 /* WorkerDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -139,6 +144,7 @@
 				87295DA025D15BD400C4D3B7 /* CoreDataService.swift */,
 				87295DAB25D29BE600C4D3B7 /* Validation.swift */,
 				87295DAF25D30F3700C4D3B7 /* Extansion.swift */,
+				873DCBB825D836A7004310D5 /* DateFormattingHelper.swift */,
 				87824BE825D40EFA00C193D9 /* ImageAPI.swift */,
 			);
 			path = Service;
@@ -217,6 +223,7 @@
 				87E414A525D6A8C500B2EF98 /* WorkerViewController.swift in Sources */,
 				8781F9E125C83B97001DF29E /* AppDelegate.swift in Sources */,
 				8781F9EB25C83B97001DF29E /* NewWorker.xcdatamodeld in Sources */,
+				873DCBB925D836A7004310D5 /* DateFormattingHelper.swift in Sources */,
 				87824BE925D40EFA00C193D9 /* ImageAPI.swift in Sources */,
 				8700B19725CD61B300D10CA7 /* CompanyTableViewController.swift in Sources */,
 				87295DA725D16F9B00C4D3B7 /* WorkerDTO.swift in Sources */,
@@ -228,6 +235,7 @@
 				8781F9FA25CC3471001DF29E /* WorkerTableViewController.swift in Sources */,
 				876015B225D6AE8900AE0EBA /* WorkerTabBarViewController.swift in Sources */,
 				8781F9FD25CC64C7001DF29E /* WorkerModel.swift in Sources */,
+				873DCBB325D7F930004310D5 /* WorkerDetailViewController.swift in Sources */,
 				873DCBAD25D6DAAF004310D5 /* CompanyModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

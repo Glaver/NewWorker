@@ -13,7 +13,6 @@ class WorkerViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
     
     //MARK: - UITableViewDataSource
@@ -28,4 +27,46 @@ class WorkerViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // MARK: Refactor optional
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let workerDetailVC = storyboard.instantiateViewController(withIdentifier: "WorkerDetailViewController") as! WorkerDetailViewController
+        
+        workerDetailVC.worker = workerModel.workerArray[indexPath.row]
+        self.navigationController?.pushViewController(workerDetailVC, animated: true)
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

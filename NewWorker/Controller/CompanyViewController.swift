@@ -10,6 +10,7 @@ import UIKit
 class CompanyViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBAction func addCompany(_ sender: UIBarButtonItem) {
         showAddCompanyTextField()
+        self.companyTableView.reloadData()
     }
     @IBOutlet weak var companyTableView: UITableView!
     
