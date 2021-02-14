@@ -7,10 +7,14 @@
 
 import UIKit
 
+protocol CompanyDelegateProtocol: AnyObject {
+    func choosenCompanyDelegate(_ company: String)
+}
 
 class CompanyTableViewController: UITableViewController {
     let companyModel = CompanyModel(serviceCoreData: CoreDataService())
-    
+    var workerTableViewController: WorkerTableViewController?
+    weak var delegate: CompanyDelegateProtocol?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,11 +33,11 @@ class CompanyTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let vc = presentingViewController as? WorkerTableViewController {
-            let choosenCompany = companyModel.companyArray[indexPath.row]
-            dismiss(animated: true) {
-                vc.choosenCompanyDelegate(choosenCompany.name ?? "")
-            }
-        }
+        let company = companyModel.companyArray[indexPath.row]
+        delegate?.choosenCompanyDelegate(company.name ?? "No company")
+        //_ = self.navigationController?.popViewController(animated: true)
+
+        dismiss(animated: true, completion: nil)
+
     }
 }

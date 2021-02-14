@@ -7,7 +7,7 @@
 import Foundation
 import UIKit
 
-class WorkerTableViewController: UITableViewController {
+class WorkerTableViewController: UITableViewController, CompanyDelegateProtocol, ImageDelegateProtocol {
     @IBOutlet weak var avatarImage: UIImageView!
     @IBOutlet weak var firstName: UITextField!
     @IBOutlet weak var lastName: UITextField!
@@ -36,13 +36,7 @@ class WorkerTableViewController: UITableViewController {
         super.viewDidLoad()
         
     }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 0 && indexPath.row == 0 {
-            self.avatarImage.load(url: ImageAPI.url)
-        }
-    }
-    
+
     private func showSaveAlertWith(message: String) {
         let alert = UIAlertController(title: "Save", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_) in
@@ -50,9 +44,23 @@ class WorkerTableViewController: UITableViewController {
         }))
         self.present(alert, animated: true, completion: nil)
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showCompany" {
+            let companyTableViewController: CompanyTableViewController = segue.destination as! CompanyTableViewController
+            companyTableViewController.delegate = self
+        }
+        if segue.identifier == "showImage" {
+            let companyTableViewController: ImageViewController = segue.destination as! ImageViewController
+            companyTableViewController.delegate = self
+        }
+    }
+    
     func choosenCompanyDelegate(_ company: String) {
-        choosenCompanyLabel.text = company
+            self.choosenCompanyLabel.text = company
+    }
+    func choosenImageAvatarDelegate(_ imageAvatar: UIImage) {
+            self.avatarImage.image = imageAvatar
     }
 }
 
