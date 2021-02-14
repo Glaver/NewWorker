@@ -9,7 +9,14 @@ import UIKit
 
 class WorkerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var workerTableView: UITableView!
+    @IBAction func addNewWorker(_ sender: UIBarButtonItem) {
+        DispatchQueue.main.async {
+            self.workerTableView.reloadData()
+        }
+    }
     let workerModel = WorkerModel(serviceCoreData: CoreDataService())
+    var workerArray: [WorkerEntity] { return workerModel.workerArray }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,14 +24,13 @@ class WorkerViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     //MARK: - UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return workerModel.workerArray.count
+        return workerArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WorkerCell", for: indexPath)
-        let worker = workerModel.workerArray[indexPath.row]
+        let worker = workerArray[indexPath.row]
         cell.textLabel?.text = (worker.firstName ?? " ") + " " + (worker.lastName ?? " ")
-        // MARK: Refactor optional
         return cell
     }
     
@@ -32,7 +38,7 @@ class WorkerViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let workerDetailVC = storyboard.instantiateViewController(withIdentifier: "WorkerDetailViewController") as! WorkerDetailViewController
         
-        workerDetailVC.worker = workerModel.workerArray[indexPath.row]
+        workerDetailVC.worker = workerArray[indexPath.row]
         self.navigationController?.pushViewController(workerDetailVC, animated: true)
     }
 }

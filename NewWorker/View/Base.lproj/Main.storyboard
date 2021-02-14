@@ -11,7 +11,7 @@
         <!--Worker-->
         <scene sceneID="dkz-cj-KoS">
             <objects>
-                <viewController id="IAO-ms-9gI" customClass="WorkerViewController" customModule="NewWorker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WorkerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="IAO-ms-9gI" customClass="WorkerViewController" customModule="NewWorker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ihh-z2-AFH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -42,6 +42,7 @@
                     <navigationItem key="navigationItem" title="Worker" id="KTd-X3-cEj">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="wm5-1X-EGA">
                             <connections>
+                                <action selector="addNewWorker:" destination="IAO-ms-9gI" id="lKO-r1-wdH"/>
                                 <segue destination="L4i-ht-kQz" kind="showDetail" id="JPc-h2-S1I"/>
                             </connections>
                         </barButtonItem>

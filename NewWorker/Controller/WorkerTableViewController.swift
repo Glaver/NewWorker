@@ -4,7 +4,6 @@
 //
 //  Created by Vladyslav on 4/2/21.
 //
-import CoreData
 import Foundation
 import UIKit
 
@@ -47,25 +46,14 @@ class WorkerTableViewController: UITableViewController {
     private func showSaveAlertWith(message: String) {
         let alert = UIAlertController(title: "Save", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_) in
-            //print("Saved")
+            self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
         }))
         self.present(alert, animated: true, completion: nil)
     }
 
-    
     func choosenCompanyDelegate(_ company: String) {
         choosenCompanyLabel.text = company
     }
 }
 
-class DeleteEntityPolicy: NSEntityMigrationPolicy {
-    override func begin(_ mapping: NSEntityMapping, with manager: NSMigrationManager) throws {
-        // Get all current entities and delete them before mapping begins
-        let entityName = "NewWorker"
-        let request = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        let context = manager.sourceContext
-        let results = try context.fetch(request)
-        results.forEach(context.delete)
-        try super.begin(mapping, with: manager)
-    }
-}
+

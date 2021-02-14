@@ -81,3 +81,15 @@ class CoreDataService: WorkerCoreDataServiceProtocol, CompanyCoreDataServiceProt
         return companyEntityArray
     }
 }
+
+class DeleteEntityPolicy: NSEntityMigrationPolicy {
+    override func begin(_ mapping: NSEntityMapping, with manager: NSMigrationManager) throws {
+        // Get all current entities and delete them before mapping begins
+        let entityName = "NewWorker"
+        let request = NSFetchRequest<NSManagedObject>(entityName: entityName)
+        let context = manager.sourceContext
+        let results = try context.fetch(request)
+        results.forEach(context.delete)
+        try super.begin(mapping, with: manager)
+    }
+}
