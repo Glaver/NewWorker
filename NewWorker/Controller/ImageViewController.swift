@@ -7,24 +7,24 @@
 
 import UIKit
 
+let numberOfImages = 6
+
 protocol ImageDelegateProtocol: AnyObject {
     func choosenImageAvatarDelegate(_ imageAvatar: UIImage)
 }
 
 class ImageViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     @IBOutlet weak var imageAvatarCollection: UICollectionView!
-    var collectionImages = [UIImage]()
     weak var delegate: ImageDelegateProtocol?
-    let numberOfImages = 6
     
     override func viewDidLoad() {
         super.viewDidLoad()
 //        for _ in 0...numberOfImages {
-//           // DispatchQueue.main.async {
+//
 //                let imageAvatar = UIImageView()
 //                imageAvatar.load(url: ImageAPI.url)
 //                self.collectionImages.append(imageAvatar.image ?? UIImage(named: "blur")!)
-//            //}
+//
 //        }
         imageAvatarCollection.dataSource = self
         imageAvatarCollection.delegate = self
@@ -37,16 +37,17 @@ class ImageViewController: UIViewController, UICollectionViewDelegate, UICollect
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let itemCell = imageAvatarCollection.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as? ImageCollectionViewCell {
             itemCell.imageForCell.load(url: ImageAPI.url)
-            collectionImages.append(itemCell.imageForCell.image ?? UIImage(named: "blur")!)
             return itemCell
         }
         return UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let imageAvatar = collectionImages[indexPath.row]
-        delegate?.choosenImageAvatarDelegate(imageAvatar)
+        var image = UIImage(named: "blur")!
+        if let cell = collectionView.cellForItem(at: indexPath) as? ImageCollectionViewCell {
+            image = cell.imageForCell.image ?? UIImage(named: "blur")!
+        }
+        delegate?.choosenImageAvatarDelegate(image)
         _ = self.navigationController?.popViewController(animated: true)
-        //dismiss(animated: true, completion: nil)
     }
 }

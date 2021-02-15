@@ -13,6 +13,7 @@ class WorkerTableViewController: UITableViewController, CompanyDelegateProtocol,
     @IBOutlet weak var lastName: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var choosenCompanyLabel: UILabel!
+    
     @IBAction func saveButton(_ sender: UIButton) {
         let firstNameData = Validation.forTextFiled(firstName.text ?? " ", nameTextField: "firstName")
         let lastNameData = Validation.forTextFiled(lastName.text ?? " ", nameTextField: "lastName")
