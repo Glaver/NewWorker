@@ -40,7 +40,7 @@
                         <viewLayoutGuide key="safeArea" id="PoU-zd-6hK"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Worker" id="KTd-X3-cEj">
+                    <navigationItem key="navigationItem" title="Worker" leftItemsSupplementBackButton="YES" id="KTd-X3-cEj">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="wm5-1X-EGA">
                             <connections>
                                 <action selector="addNewWorker:" destination="IAO-ms-9gI" id="lKO-r1-wdH"/>

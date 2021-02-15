@@ -35,9 +35,6 @@ class CompanyTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let company = companyModel.companyArray[indexPath.row]
         delegate?.choosenCompanyDelegate(company.name ?? "No company")
-        //_ = self.navigationController?.popViewController(animated: true)
-
         dismiss(animated: true, completion: nil)
-
     }
 }

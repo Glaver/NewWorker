@@ -32,6 +32,14 @@ class CompanyViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.textLabel?.text = company.name
         return cell
     }
+    //MARK: - Delete company
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            companyModel.serviceCoreData?.deleteEntity("CompanyEntity", format: "name", nameToDelete: companyArray[indexPath.row].name!)
+            //print("Delete: " + (companyArray[indexPath.row].name ?? " "))
+            self.companyTableView.reloadData()
+        }
+    }
     
     private func showAddCompanyTextField() {
         let alert = UIAlertController(title: "Add new company", message: nil, preferredStyle: .alert)

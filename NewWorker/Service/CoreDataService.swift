@@ -12,15 +12,17 @@ import UIKit
 protocol WorkerCoreDataServiceProtocol {
     func saveWorker(_ newWorker: WorkerDTO)
     func fetchWorker() -> [WorkerEntity]
+    func deleteEntity(_ name: String, format: String, nameToDelete: String)
 }
 
 protocol CompanyCoreDataServiceProtocol {
     func saveCompany(_ newCompany: CompanyDTO)
     func fetchCompany() -> [CompanyEntity]
+    func deleteEntity(_ name: String, format: String, nameToDelete: String)
 }
 
 class CoreDataService: WorkerCoreDataServiceProtocol, CompanyCoreDataServiceProtocol {
-   //MARK: - Save Worker to CoreData
+    //MARK: - Save Worker to CoreData
     func saveWorker(_ newWorker: WorkerDTO) {
         guard let appDeleagate = UIApplication.shared.delegate as? AppDelegate else { return }
         let managedContext = appDeleagate.persistentContainer.viewContext
@@ -63,7 +65,7 @@ class CoreDataService: WorkerCoreDataServiceProtocol, CompanyCoreDataServiceProt
         do {
             companyEntityArray = try managedContext.fetch(fetchRequest)
         } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
+            print("Could not fetch. \(error.localizedDescription), \(error.userInfo)")
         }
         return companyEntityArray
     }
@@ -76,20 +78,47 @@ class CoreDataService: WorkerCoreDataServiceProtocol, CompanyCoreDataServiceProt
         do {
             companyEntityArray = try managedContext.fetch(fetchRequest)
         } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
+            print("Could not fetch. \(error.localizedDescription), \(error.userInfo)")
         }
         return companyEntityArray
     }
-}
-
-class DeleteEntityPolicy: NSEntityMigrationPolicy {
-    override func begin(_ mapping: NSEntityMapping, with manager: NSMigrationManager) throws {
-        // Get all current entities and delete them before mapping begins
-        let entityName = "NewWorker"
-        let request = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        let context = manager.sourceContext
-        let results = try context.fetch(request)
-        results.forEach(context.delete)
-        try super.begin(mapping, with: manager)
+    //MARK: - Delete from CoreData
+    func deleteEntity(_ name: String, format: String, nameToDelete: String) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: name)
+        fetchRequest.predicate = NSPredicate(format: format + " = %@", nameToDelete)
+        
+        do {
+            let test = try managedContext.fetch(fetchRequest)
+            let objectToDelete = test[0] as! NSManagedObject
+            managedContext.delete(objectToDelete)
+            
+            do {
+                try managedContext.save()
+            } catch {
+                print(error.localizedDescription)
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    //MARK: - Delete All Entity's from CoreData
+    //workerModel.serviceCoreData?.deleteAllEntity() //use this command to delete all WorkerEntity
+    func deleteAllEntity() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<WorkerEntity> = WorkerEntity.fetchRequest()
+        
+        if let worker = try? managedContext.fetch(fetchRequest) {
+            for employe in worker {
+                managedContext.delete(employe)
+            }
+        }
+        do {
+            try managedContext.save()
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 }

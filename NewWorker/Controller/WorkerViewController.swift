@@ -9,14 +9,9 @@ import UIKit
 
 class WorkerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var workerTableView: UITableView!
-    @IBAction func addNewWorker(_ sender: UIBarButtonItem) {
-        DispatchQueue.main.async {
-            self.workerTableView.reloadData()
-        }
-    }
+    @IBAction func addNewWorker(_ sender: UIBarButtonItem) { }
     let workerModel = WorkerModel(serviceCoreData: CoreDataService())
     var workerArray: [WorkerEntity] { return workerModel.workerArray }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,38 +36,12 @@ class WorkerViewController: UIViewController, UITableViewDelegate, UITableViewDa
         workerDetailVC.worker = workerArray[indexPath.row]
         self.navigationController?.pushViewController(workerDetailVC, animated: true)
     }
+    //MARK: - Delete worker
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            workerModel.serviceCoreData?.deleteEntity("WorkerEntity", format: "firstName", nameToDelete: workerArray[indexPath.row].firstName!)
+            //print("Delete: " + (workerArray[indexPath.row].firstName ?? " "))
+            self.workerTableView.reloadData()
+        }
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

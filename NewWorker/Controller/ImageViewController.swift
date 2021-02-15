@@ -19,13 +19,6 @@ class ImageViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        for _ in 0...numberOfImages {
-//
-//                let imageAvatar = UIImageView()
-//                imageAvatar.load(url: ImageAPI.url)
-//                self.collectionImages.append(imageAvatar.image ?? UIImage(named: "blur")!)
-//
-//        }
         imageAvatarCollection.dataSource = self
         imageAvatarCollection.delegate = self
     }
